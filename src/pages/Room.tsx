@@ -8,28 +8,6 @@ import { RoomCode } from '../components/RoomCode'
 import logoImg from '../assets/images/logo.svg';
 
 import '../styles/room.scss';
-import { database } from '../services/firebase';
-
-type FirebaseQuestionsType = Record<string, {
-  author: {
-    name: string,
-    avatar: string,
-  },
-  content: string,
-  isHighLighted: string,
-  isAnswered: string,
-}>
-
-type QuestionsType = {
-  id: string;
-  author: {
-    name: string,
-    avatar: string,
-  },
-  content: string,
-  isHighLighted: string,
-  isAnswered: string,
-}
 
 type RoomParms = {
   id: string;
@@ -39,9 +17,6 @@ export function Room() {
   const { user } = useAuth()
   const params = useParams<RoomParms>()
   const [newQuestion, setNewQuestion] = useState('')
-  const [questions, setQuestions] = useState<QuestionsType[]>([])
-  const [title, setTitle] = useState('')
-
   const roomId = params.id;
 
   useEffect(() => {
