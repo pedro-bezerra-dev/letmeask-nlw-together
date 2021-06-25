@@ -1,10 +1,8 @@
-<div align="center" style="margin-bottom: 30px;"><img src="./src/assets/images/logo.svg"/></div>
+<h1 align="center"><img src="./src/assets/images/logo.svg"/></h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-835AFD"/>
 </p>
-
----
 
 ![demo](./src/assets/images/demo.svg)
 
