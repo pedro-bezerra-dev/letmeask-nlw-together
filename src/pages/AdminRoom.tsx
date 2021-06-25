@@ -41,6 +41,31 @@ export function AdminRoom() {
     history.push('/');
   }
 
+  async function handleCheckQuestionAsAnswer(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true
+    })
+  }
+
+  async function handleHighLightQuestion(questionId: string) {
+    
+    const questionRef = database.ref(`rooms/${roomId}/questions/${questionId}`)
+
+    questionRef.once('value', async question => {
+      const questionIsHighLighted = question.val().isHighLighted
+
+      if(questionIsHighLighted) {
+        await questionRef.update({
+          isHighLighted: false
+        })
+      } else {
+        await questionRef.update({
+          isHighLighted: true
+        })
+      }
+    })
+  }
+
   return (
     <div id="page-room">
       <header>
