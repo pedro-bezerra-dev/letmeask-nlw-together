@@ -24,7 +24,7 @@ This project was developed with the following technologies:
 - Install dependencies with `yarn`
 - Start the server with `yarn start`
 
-Access from `localhost:3000` your browser
+Access from [`localhost:3000`](http://localhost:3000) your browser
 
 ---
 
