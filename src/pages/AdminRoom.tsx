@@ -1,6 +1,5 @@
 import { useHistory, useParams } from 'react-router-dom';
 
-// import { useAuth } from '../hooks/useAuth';
 import { useRoom } from '../hooks/useRoom';
 
 import { database } from '../services/firebase';

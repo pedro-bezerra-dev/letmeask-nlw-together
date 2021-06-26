@@ -23,7 +23,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint'": "eslint --fix .",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -46,7 +45,6 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.7",
-    "eslint": "^7.29.0"
+    "@types/react-router-dom": "^5.1.7"
   }
 }
