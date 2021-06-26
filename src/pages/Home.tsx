@@ -42,7 +42,9 @@ export function Home() {
     }
 
     if(roomRef.val().closedAt) {
-      alert('Room already closed')
+      toast.error('Room already closed', {
+        position: 'top-right',
+      })
       return
     }
 
