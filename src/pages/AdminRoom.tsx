@@ -1,4 +1,5 @@
 import { useHistory, useParams } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 import { useRoom } from '../hooks/useRoom';
 
@@ -20,7 +21,6 @@ type RoomParms = {
 }
 
 export function AdminRoom() {
-  // const { user } = useAuth()
   const history = useHistory()
   const params = useParams<RoomParms>()
   const roomId = params.id;
@@ -35,6 +35,10 @@ export function AdminRoom() {
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
       closedAt: new Date()
+    })
+
+    toast.success('The room was successfully closed', {
+      position: 'top-right',
     })
 
     history.push('/');
