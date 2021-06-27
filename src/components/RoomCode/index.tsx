@@ -1,27 +1,34 @@
-import toast from 'react-hot-toast'
-import copyImg from '../../assets/images/copy.svg'
+import toast from 'react-hot-toast';
+import copyImg from '../../assets/images/copy.svg';
 
-import "./styles.scss"
+import './styles.scss';
 
 type RoomCodeProps = {
   code: string;
 }
 
-export function RoomCode(props: RoomCodeProps) {
+export function RoomCode({ code }: RoomCodeProps): JSX.Element {
   function copyRoomCodeToClipboard() {
-    navigator.clipboard.writeText(props.code)
+    navigator.clipboard.writeText(code);
 
     toast.success('Room code copied', {
       position: 'top-right',
-    })
+    });
   }
 
   return (
-    <button onClick={copyRoomCodeToClipboard} className="room-code">
+    <button
+      type="button"
+      onClick={copyRoomCodeToClipboard}
+      className="room-code"
+    >
       <div>
         <img src={copyImg} alt="" />
       </div>
-      <span>Sala #{props.code}</span>
+      <span>
+        Sala #
+        {code}
+      </span>
     </button>
   );
 }

@@ -1,7 +1,8 @@
-import { ReactNode } from 'react'
-import cn from 'classnames'
+/* eslint-disable react/require-default-props */
+import { ReactNode } from 'react';
+import cn from 'classnames';
 
-import './styles.scss'
+import './styles.scss';
 
 type QuestionProps = {
   content: string;
@@ -20,13 +21,13 @@ export function Question({
   children,
   isAnswered = false,
   isHighLighted = false,
-}: QuestionProps) {
+}: QuestionProps): JSX.Element {
   return (
     <div
       className={cn(
         'question',
-        { answered: isAnswered},
-        { highlighted: isHighLighted && !isAnswered},
+        { answered: isAnswered },
+        { highlighted: isHighLighted && !isAnswered },
       )}
     >
       <p>{content}</p>

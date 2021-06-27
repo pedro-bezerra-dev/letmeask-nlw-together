@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react';
 
-import { useAuth } from "./useAuth"
+import { useAuth } from './useAuth';
 
-import { database } from "../services/firebase"
+import { database } from '../services/firebase';
 
 type QuestionsType = {
   id: string;
@@ -30,38 +30,38 @@ type FirebaseQuestionsType = Record<string, {
   }>
 }>
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function useRoom(roomId: string) {
-  const { user } = useAuth()
-  const [questions, setQuestions] = useState<QuestionsType[]>([])
-  const [title, setTitle] = useState('')
+  const { user } = useAuth();
+  const [questions, setQuestions] = useState<QuestionsType[]>([]);
+  const [title, setTitle] = useState('');
 
   useEffect(() => {
-    const roomRef = database.ref(`rooms/${roomId}`)
+    const roomRef = database.ref(`rooms/${roomId}`);
 
-    roomRef.on('value', room => {
-      const databaseRoom = room.val()
-      const firebaseQuestions: FirebaseQuestionsType = databaseRoom.questions ?? {}
+    roomRef.on('value', (room) => {
+      const databaseRoom = room.val();
+      const firebaseQuestions: FirebaseQuestionsType = databaseRoom.questions ?? {};
 
-      const parsedQuestions = Object.entries(firebaseQuestions).map(([key, value]) => {
-        return {
-          id: key,
-          content: value.content,
-          author: value.author,
-          isHighLighted: value.isHighLighted,
-          isAnswered: value.isAnswered,
-          likeCount: Object.values(value.likes ?? {}).length,
-          likeId: Object.entries(value.likes ?? {}).find(([key, like]) => like.authorId === user?.id)?.[0]
-        }
-      })
+      const parsedQuestions = Object.entries(firebaseQuestions).map(([key, value]) => ({
+        id: key,
+        content: value.content,
+        author: value.author,
+        isHighLighted: value.isHighLighted,
+        isAnswered: value.isAnswered,
+        likeCount: Object.values(value.likes ?? {}).length,
+        // eslint-disable-next-line max-len, @typescript-eslint/no-unused-vars, no-shadow
+        likeId: Object.entries(value.likes ?? {}).find(([key, like]) => like.authorId === user?.id)?.[0],
+      }));
 
-      setTitle(databaseRoom.title)
-      setQuestions(parsedQuestions)
+      setTitle(databaseRoom.title);
+      setQuestions(parsedQuestions);
 
       return () => {
-        roomRef.off('value')
-      }
-    })
-  }, [roomId, user?.id])
+        roomRef.off('value');
+      };
+    });
+  }, [roomId, user?.id]);
 
-  return { questions, title }
+  return { questions, title };
 }
