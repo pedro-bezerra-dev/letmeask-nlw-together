@@ -30,8 +30,13 @@ type FirebaseQuestionsType = Record<string, {
   }>
 }>
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function useRoom(roomId: string) {
+type UseRoomType = {
+  questions: QuestionsType[];
+  title: string;
+  authorId: string;
+}
+
+export function useRoom(roomId: string): UseRoomType {
   const { user } = useAuth();
   const [questions, setQuestions] = useState<QuestionsType[]>([]);
   const [title, setTitle] = useState('');
