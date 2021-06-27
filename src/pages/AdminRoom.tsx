@@ -1,3 +1,4 @@
+import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
@@ -5,9 +6,9 @@ import { useRoom } from '../hooks/useRoom';
 
 import { database } from '../services/firebase';
 
-import { Button } from '../components/Button'
-import { RoomCode } from '../components/RoomCode'
-import { Question } from '../components/Question'
+import { Button } from '../components/Button';
+import { RoomCode } from '../components/RoomCode';
+import { Question } from '../components/Question';
 
 import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
@@ -20,53 +21,53 @@ type RoomParms = {
   id: string;
 }
 
-export function AdminRoom() {
-  const history = useHistory()
-  const params = useParams<RoomParms>()
+export function AdminRoom(): JSX.Element {
+  const history = useHistory();
+  const params = useParams<RoomParms>();
   const roomId = params.id;
-  const { title, questions } = useRoom(roomId)
+  const { title, questions } = useRoom(roomId);
 
   async function handleDeleteQuestion(questionId: string) {
-    if(window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
-      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+    // eslint-disable-next-line no-alert
+    if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
     }
   }
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
-      closedAt: new Date()
-    })
+      closedAt: new Date(),
+    });
 
     toast.success('The room was successfully closed', {
       position: 'top-right',
-    })
+    });
 
     history.push('/');
   }
 
   async function handleCheckQuestionAsAnswer(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-      isAnswered: true
-    })
+      isAnswered: true,
+    });
   }
 
   async function handleHighLightQuestion(questionId: string) {
-    
-    const questionRef = database.ref(`rooms/${roomId}/questions/${questionId}`)
+    const questionRef = database.ref(`rooms/${roomId}/questions/${questionId}`);
 
-    questionRef.once('value', async question => {
-      const questionIsHighLighted = question.val().isHighLighted
+    questionRef.once('value', async (question) => {
+      const questionIsHighLighted = question.val().isHighLighted;
 
-      if(questionIsHighLighted) {
+      if (questionIsHighLighted) {
         await questionRef.update({
-          isHighLighted: false
-        })
+          isHighLighted: false,
+        });
       } else {
         await questionRef.update({
-          isHighLighted: true
-        })
+          isHighLighted: true,
+        });
       }
-    })
+    });
   }
 
   return (
@@ -75,7 +76,7 @@ export function AdminRoom() {
         <div className="content">
           <img src={logoImg} alt="" />
           <div>
-            <RoomCode code={roomId}/>
+            <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
           </div>
         </div>
@@ -83,45 +84,53 @@ export function AdminRoom() {
 
       <main>
         <div className="room-title">
-          <h1>Sala {title}</h1>
-          { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+          <h1>
+            Sala
+            {' '}
+            {title}
+          </h1>
+          { questions.length > 0 && (
+          <span>
+            {questions.length}
+            {' '}
+            pergunta(s)
+          </span>
+          )}
         </div>
 
         <div className="questions-list">
-          {questions.map((question) => {
-            return (
-              <Question
-                key={question.id}
-                content={question.content}
-                author={question.author}
-                isAnswered={question.isAnswered}
-                isHighLighted={question.isHighLighted}
-              >
-                {!question.isAnswered && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => handleCheckQuestionAsAnswer(question.id)}
-                    >
-                      <img src={checkImg} alt="Marccar pergunta como respondida" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleHighLightQuestion(question.id)}
-                    >
-                      <img src={answerImg} alt="Dar destaque à pergunta" />
-                    </button>
-                  </>
-                )}
+          {questions.map((question) => (
+            <Question
+              key={question.id}
+              content={question.content}
+              author={question.author}
+              isAnswered={question.isAnswered}
+              isHighLighted={question.isHighLighted}
+            >
+              {!question.isAnswered && (
+              <>
                 <button
                   type="button"
-                  onClick={() => handleDeleteQuestion(question.id)}
+                  onClick={() => handleCheckQuestionAsAnswer(question.id)}
                 >
-                  <img src={deleteImg} alt="Remover pergunta" />
+                  <img src={checkImg} alt="Marccar pergunta como respondida" />
                 </button>
-              </Question>
-            )
-          })}
+                <button
+                  type="button"
+                  onClick={() => handleHighLightQuestion(question.id)}
+                >
+                  <img src={answerImg} alt="Dar destaque à pergunta" />
+                </button>
+              </>
+              )}
+              <button
+                type="button"
+                onClick={() => handleDeleteQuestion(question.id)}
+              >
+                <img src={deleteImg} alt="Remover pergunta" />
+              </button>
+            </Question>
+          ))}
         </div>
       </main>
     </div>

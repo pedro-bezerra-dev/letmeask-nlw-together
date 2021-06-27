@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 
 import { Toaster } from 'react-hot-toast';
+
+import App from './App';
 
 import './services/firebase';
 
@@ -13,5 +14,5 @@ ReactDOM.render(
     <App />
     <Toaster />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
