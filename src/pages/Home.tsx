@@ -35,14 +35,14 @@ export function Home(): JSX.Element {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      toast.error('Room does not exists', {
+      toast.error('A sala não existe', {
         position: 'top-right',
       });
       return;
     }
 
     if (roomRef.val().closedAt) {
-      toast.error('Room already closed', {
+      toast.error('A sala já foi fechada', {
         position: 'top-right',
       });
       return;

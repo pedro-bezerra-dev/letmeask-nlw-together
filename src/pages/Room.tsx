@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 import { useAuth } from '../hooks/useAuth';
 import { useRoom } from '../hooks/useRoom';
@@ -33,14 +34,18 @@ export function Room(): JSX.Element {
     }
 
     if (!user) {
-      throw new Error('You must logged in');
+      toast.error('Você deve estar logado para enviar perguntas', {
+        style: {
+          maxWidth: '100px',
+        },
+      });
     }
 
     const question = {
       content: newQuestion,
       author: {
-        name: user.name,
-        avatar: user.avatar,
+        name: user?.name,
+        avatar: user?.avatar,
       },
       isHighLighted: false,
       isAnswered: false,
