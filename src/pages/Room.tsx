@@ -19,7 +19,7 @@ type RoomParms = {
 }
 
 export function Room(): JSX.Element {
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const params = useParams<RoomParms>();
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
@@ -103,7 +103,7 @@ export function Room(): JSX.Element {
               <span>
                 Para enviar sua pergunta,
                 {' '}
-                <button type="button">faça seu login</button>
+                <button type="button" onClick={async () => { await signInWithGoogle(); }}>faça seu login</button>
                 .
               </span>
             ) }

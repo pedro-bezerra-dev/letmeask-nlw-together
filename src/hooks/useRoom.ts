@@ -30,11 +30,17 @@ type FirebaseQuestionsType = Record<string, {
   }>
 }>
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function useRoom(roomId: string) {
+type UseRoomType = {
+  questions: QuestionsType[];
+  title: string;
+  authorId: string;
+}
+
+export function useRoom(roomId: string): UseRoomType {
   const { user } = useAuth();
   const [questions, setQuestions] = useState<QuestionsType[]>([]);
   const [title, setTitle] = useState('');
+  const [authorId, setAuthorId] = useState('');
 
   useEffect(() => {
     const roomRef = database.ref(`rooms/${roomId}`);
@@ -56,6 +62,7 @@ export function useRoom(roomId: string) {
 
       setTitle(databaseRoom.title);
       setQuestions(parsedQuestions);
+      setAuthorId(databaseRoom.authorId);
 
       return () => {
         roomRef.off('value');
@@ -63,5 +70,5 @@ export function useRoom(roomId: string) {
     });
   }, [roomId, user?.id]);
 
-  return { questions, title };
+  return { questions, title, authorId };
 }
