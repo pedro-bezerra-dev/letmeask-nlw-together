@@ -24,5 +24,12 @@
     "react-hooks"
   ],
   "rules": {
+      "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+      "react/react-in-jsx-scope": "off",
+      "global-require": "off",
+      "import/prefer-default-export": "off",
+      "import/no-unresolved": "off",
+      "import/extensions": "off",
+      "no-use-before-define": [0, { "functions": false, "classes": false, "variables": false }]
   }
 }
