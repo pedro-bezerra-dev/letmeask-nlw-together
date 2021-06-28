@@ -40,7 +40,7 @@ export function AdminRoom(): JSX.Element {
       closedAt: new Date(),
     });
 
-    toast.success('The room was successfully closed', {
+    toast.success('A sala foi fechada com sucesso', {
       position: 'top-right',
     });
 
