@@ -34,6 +34,7 @@ type UseRoomType = {
   questions: QuestionsType[];
   title: string;
   authorId: string;
+  roomItsClosed: boolean;
 }
 
 export function useRoom(roomId: string): UseRoomType {
@@ -41,6 +42,7 @@ export function useRoom(roomId: string): UseRoomType {
   const [questions, setQuestions] = useState<QuestionsType[]>([]);
   const [title, setTitle] = useState('');
   const [authorId, setAuthorId] = useState('');
+  const [roomItsClosed, setRoomItsClosed] = useState(false);
 
   useEffect(() => {
     const roomRef = database.ref(`rooms/${roomId}`);
@@ -70,5 +72,25 @@ export function useRoom(roomId: string): UseRoomType {
     });
   }, [roomId, user?.id]);
 
-  return { questions, title, authorId };
+  useEffect(() => {
+    const roomClosedAt = database.ref(`rooms/${roomId}/closedAt`);
+
+    roomClosedAt.on('value', (closedAt) => {
+      if (closedAt.exists() === false) {
+        setRoomItsClosed(false);
+      }
+
+      if (closedAt.exists() === true) {
+        setRoomItsClosed(true);
+      }
+    });
+
+    return () => {
+      roomClosedAt.off('value');
+    };
+  }, []);
+
+  return {
+    questions, title, authorId, roomItsClosed,
+  };
 }
