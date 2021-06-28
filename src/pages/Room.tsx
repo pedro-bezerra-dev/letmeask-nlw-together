@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 import { useAuth } from '../hooks/useAuth';
