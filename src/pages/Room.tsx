@@ -20,11 +20,12 @@ type RoomParms = {
 }
 
 export function Room(): JSX.Element {
-  const { user, signInWithGoogle } = useAuth();
   const params = useParams<RoomParms>();
-  const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
-  const { title, questions } = useRoom(roomId);
+  const [newQuestion, setNewQuestion] = useState('');
+  const { user, signInWithGoogle } = useAuth();
+  const { title, questions, roomItsClosed } = useRoom(roomId);
+  const history = useHistory();
 
   async function handleNewQuestion(event: FormEvent) {
     event.preventDefault();
