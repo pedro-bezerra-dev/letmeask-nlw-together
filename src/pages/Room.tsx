@@ -147,5 +147,21 @@ export function Room(): JSX.Element {
             </div>
           </main>
         </div>
+      </>
+      ) }
+
+      { roomItsClosed && (
+        <>
+          <div id="page-room" className="blocked">
+            <main>
+              <img src={logoImg} alt="Logo" />
+              <p>Ops, parece que o adiministrador já encerrou a sala</p>
+              <Button onClick={() => history.push('/')}>Voltar para a Home</Button>
+            </main>
+          </div>
+        </>
+      )}
+    </>
+
   );
 }
