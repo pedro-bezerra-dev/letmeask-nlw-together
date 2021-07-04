@@ -25,4 +25,23 @@
     font-size: 14px;
     font-weight: 500;
   }
+
+  .alternative-text {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .room-code {
+    width: 150px;
+
+    span {
+      display: none;
+    }
+
+    .alternative-text {
+      padding: 0;
+      display: flex;
+    }
+  }
 }

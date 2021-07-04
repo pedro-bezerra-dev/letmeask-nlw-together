@@ -29,6 +29,9 @@ export function RoomCode({ code }: RoomCodeProps): JSX.Element {
         Sala #
         {code}
       </span>
+      <span className="alternative-text">
+        Copiar código da sala
+      </span>
     </button>
   );
 }
