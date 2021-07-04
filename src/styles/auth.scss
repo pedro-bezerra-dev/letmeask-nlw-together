@@ -143,7 +143,8 @@
 }
 
 @media (max-width: 860px) {
-  #page-auth {
+  #page-auth,
+  #page-auth.new-room-page {
     flex-direction: column;
 
     aside {
@@ -189,6 +190,24 @@
         margin: 0;
       }
     }
+
+    &.new-room-page {
+      aside {
+        flex-direction: column;
+        gap: 0;
+        flex: 1;
+
+        img {
+          display: none;
+        }
+      }
+
+      .main-content {
+        button {
+          margin-top: 1.6rem;
+        }
+      }
+    }
   }
 }
 
@@ -217,6 +236,16 @@
       > img {
         width: 12rem;
       }
+    }
+  }
+
+  #page-auth.new-room-page {
+    aside {
+      display: none;
+    }
+
+    main {
+      align-items: center;
     }
   }
 }
