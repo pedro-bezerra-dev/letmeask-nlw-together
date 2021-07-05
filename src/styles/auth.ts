@@ -1,4 +1,6 @@
-#page-auth {
+import styled from 'styled-components';
+
+export const PageAuth = styled.div`
   display: flex;
   align-items: stretch;
   height: 100vh;
@@ -143,8 +145,8 @@
 }
 
 @media (max-width: 860px) {
-  #page-auth,
-  #page-auth.new-room-page {
+  &,
+  &.new-room-page {
     flex-direction: column;
 
     aside {
@@ -212,7 +214,7 @@
 }
 
 @media (max-width: 550px) {
-  #page-auth {
+  & {
     aside {
       margin-top: 15rem;
 
@@ -237,15 +239,15 @@
         width: 12rem;
       }
     }
-  }
 
-  #page-auth.new-room-page {
-    aside {
-      display: none;
-    }
+    &.new-room-page {
+      aside {
+        display: none;
+      }
 
-    main {
-      align-items: center;
+      main {
+        align-items: center;
+      }
     }
   }
-}
+`;
