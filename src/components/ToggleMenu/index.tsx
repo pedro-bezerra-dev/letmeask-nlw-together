@@ -1,7 +1,7 @@
 import { HTMLAttributes, ReactNode, useState } from 'react';
 import cn from 'classnames';
 
-import './styles.scss';
+import { ToggleMenuStyled } from './styles';
 
 type ToggleMenuProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
@@ -17,7 +17,7 @@ export function ToggleMenu({ children }: ToggleMenuProps): JSX.Element {
   }
 
   return (
-    <div
+    <ToggleMenuStyled
       className={cn(
         'toggle-menu',
         { open: buttonItsOpen },
@@ -34,6 +34,6 @@ export function ToggleMenu({ children }: ToggleMenuProps): JSX.Element {
       <div className="content">
         {children}
       </div>
-    </div>
+    </ToggleMenuStyled>
   );
 }

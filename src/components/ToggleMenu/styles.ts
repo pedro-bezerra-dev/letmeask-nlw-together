@@ -1,4 +1,6 @@
-#root {
+import styled from 'styled-components';
+
+export const ToggleMenuStyled = styled.div`
   .toggle-menu {
     position: relative;
     transition: all .2s;
@@ -101,4 +103,4 @@
       }
     }
   }
-}
+`;
