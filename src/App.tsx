@@ -8,12 +8,15 @@ import { AdminRoom } from './pages/AdminRoom';
 
 import { AuthContextProvider } from './contexts/AuthContext';
 
+import { useTheme } from './hooks/useTheme';
+
 import GlobalStyle from './styles/global';
-import light from './styles/themes/light';
 
 function App(): JSX.Element {
+  const { theme } = useTheme();
+
   return (
-    <ThemeProvider theme={light}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <BrowserRouter>
         <AuthContextProvider>
