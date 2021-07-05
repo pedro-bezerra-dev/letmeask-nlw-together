@@ -33,7 +33,7 @@ export function NewRoom(): JSX.Element {
   }
 
   return (
-    <div id="page-auth">
+    <div id="page-auth" className="new-room-page">
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas Q&amp;A ao-vivo</strong>

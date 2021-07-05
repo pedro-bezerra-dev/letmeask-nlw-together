@@ -9,6 +9,7 @@ import { database } from '../services/firebase';
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
+import { ToggleMenu } from '../components/ToggleMenu';
 
 import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
@@ -79,10 +80,10 @@ export function AdminRoom(): JSX.Element {
             <header>
               <div className="content">
                 <img src={logoImg} alt="Logo" />
-                <div>
+                <ToggleMenu>
                   <RoomCode code={roomId} />
                   <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
-                </div>
+                </ToggleMenu>
               </div>
             </header>
 

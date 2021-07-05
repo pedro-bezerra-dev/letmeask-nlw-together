@@ -9,6 +9,7 @@ import { Button } from '../components/Button';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
+import demoImg from '../assets/images/demo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 
 import '../styles/auth.scss';
@@ -54,9 +55,16 @@ export function Home(): JSX.Element {
   return (
     <div id="page-auth">
       <aside>
-        <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
-        <strong>Crie salas Q&amp;A ao-vivo</strong>
-        <p>Tire as dúvidas da sua audiência em tempo real</p>
+        <picture>
+          <source media="(min-width: 860px)" srcSet={illustrationImg} />
+          <source media="(min-width: 100px) and (max-width: 860px)" srcSet={demoImg} />
+
+          <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
+        </picture>
+        <div>
+          <strong>Crie salas Q&amp;A ao-vivo</strong>
+          <p>Tire as dúvidas da sua audiência em tempo real</p>
+        </div>
       </aside>
       <main>
         <div className="main-content">
