@@ -12,7 +12,7 @@ import logoImg from '../assets/images/logo.svg';
 import demoImg from '../assets/images/demo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 
-import '../styles/auth.scss';
+import { PageAuth } from '../styles/auth';
 
 export function Home(): JSX.Element {
   const history = useHistory();
@@ -53,7 +53,7 @@ export function Home(): JSX.Element {
   }
 
   return (
-    <div id="page-auth">
+    <PageAuth id="page-auth">
       <aside>
         <picture>
           <source media="(min-width: 860px)" srcSet={illustrationImg} />
@@ -91,6 +91,6 @@ export function Home(): JSX.Element {
           </form>
         </div>
       </main>
-    </div>
+    </PageAuth>
   );
 }

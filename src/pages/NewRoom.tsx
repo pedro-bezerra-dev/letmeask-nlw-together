@@ -9,7 +9,7 @@ import { Button } from '../components/Button';
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 
-import '../styles/auth.scss';
+import { PageAuth } from '../styles/auth';
 
 export function NewRoom(): JSX.Element {
   const { user } = useAuth();
@@ -33,7 +33,7 @@ export function NewRoom(): JSX.Element {
   }
 
   return (
-    <div id="page-auth" className="new-room-page">
+    <PageAuth id="page-auth" className="new-room-page">
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas Q&amp;A ao-vivo</strong>
@@ -59,6 +59,6 @@ export function NewRoom(): JSX.Element {
           </p>
         </div>
       </main>
-    </div>
+    </PageAuth>
   );
 }
