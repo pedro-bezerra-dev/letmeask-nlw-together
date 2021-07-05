@@ -23,6 +23,10 @@
           padding: 0 32px;
         }
       }
+
+      .toggle-menu {
+        display: none;
+      }
     }
   }
 
@@ -148,8 +152,22 @@
 
 @media (max-width: 860px) {
   #page-room {
+    header > .content {
+      > button {
+        display: none;
+      }
+
+      .toggle-menu {
+        display: flex;
+      }
+    }
+
     main {
       width: 80%;
+
+      .room-title {
+        justify-content: space-between;
+      }
 
       form {
         .form-footer {
@@ -170,6 +188,10 @@
           span {
             margin: 0;
           }
+        }
+
+        .question footer div:nth-child(2) {
+          gap: 10px;
         }
       }
     }

@@ -8,6 +8,7 @@ import { useRoom } from '../hooks/useRoom';
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
+import { ToggleMenu } from '../components/ToggleMenu';
 
 import { database } from '../services/firebase';
 
@@ -76,6 +77,9 @@ export function Room(): JSX.Element {
             <div className="content">
               <img src={logoImg} alt="" />
               <RoomCode code={roomId} />
+              <ToggleMenu>
+                <RoomCode code={roomId} />
+              </ToggleMenu>
             </div>
           </header>
 
