@@ -2,7 +2,7 @@
 import { ReactNode } from 'react';
 import cn from 'classnames';
 
-import './styles.scss';
+import { QuestionStyled } from './styles';
 
 type QuestionProps = {
   content: string;
@@ -23,7 +23,7 @@ export function Question({
   isHighLighted = false,
 }: QuestionProps): JSX.Element {
   return (
-    <div
+    <QuestionStyled
       className={cn(
         'question',
         { answered: isAnswered },
@@ -40,6 +40,6 @@ export function Question({
           {children}
         </div>
       </footer>
-    </div>
+    </QuestionStyled>
   );
 }
