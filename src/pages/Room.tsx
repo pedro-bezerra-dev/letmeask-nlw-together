@@ -9,6 +9,7 @@ import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 import { ToggleMenu } from '../components/ToggleMenu';
+import { ThemeSwitcher } from '../components/ThemeSwitcher';
 
 import { database } from '../services/firebase';
 
@@ -76,8 +77,10 @@ export function Room(): JSX.Element {
           <header>
             <div className="content">
               <img src={logoImg} alt="" />
+              <ThemeSwitcher />
               <RoomCode code={roomId} />
               <ToggleMenu>
+                <ThemeSwitcher />
                 <RoomCode code={roomId} />
               </ToggleMenu>
             </div>
