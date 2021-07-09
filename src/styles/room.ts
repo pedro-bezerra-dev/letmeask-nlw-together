@@ -12,6 +12,11 @@ export const PageRoom = styled.div`
       justify-content: space-between;
       align-items: center;
 
+      .theme-switcher {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
       > img {
         max-height: 45px;
       }
@@ -159,6 +164,12 @@ export const PageRoom = styled.div`
 
     .toggle-menu {
       display: flex;
+
+      .theme-switcher {
+        top: 2.4rem;
+        left: 3.6rem;
+        transform: translateY(20%);
+      }
     }
   }
 
