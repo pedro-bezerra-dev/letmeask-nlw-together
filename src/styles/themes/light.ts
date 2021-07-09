@@ -6,5 +6,6 @@ export default {
     secondary: '#fff',
     background: '#f8f8f8',
     font: '#29292e',
+    border: '#e2e2e2',
   },
 };
