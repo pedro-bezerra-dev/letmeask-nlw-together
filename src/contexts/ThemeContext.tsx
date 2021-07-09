@@ -1,4 +1,6 @@
-import { useState, ReactNode, createContext } from 'react';
+import { ReactNode, createContext } from 'react';
+
+import { usePersistedState } from '../hooks/usePersistedState';
 
 import light from '../styles/themes/light';
 import dark from '../styles/themes/dark';
@@ -27,7 +29,7 @@ type ThemeContextProviderProps = {
 export const ThemeContext = createContext({} as ThemeContextType);
 
 export function ThemeContextProvider({ children }: ThemeContextProviderProps): JSX.Element {
-  const [theme, setTheme] = useState(light);
+  const [theme, setTheme] = usePersistedState('theme', light);
 
   function toggleTheme() {
     setTheme(theme.title === 'light' ? dark : light);
