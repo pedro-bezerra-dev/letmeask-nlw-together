@@ -8,8 +8,10 @@ type Theme = {
 
   colors: {
     primary: string;
+    secondary: string;
     background: string;
     font: string;
+    border: string;
   }
 }
 
