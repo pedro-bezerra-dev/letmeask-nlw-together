@@ -5,7 +5,7 @@ export const RoomCodeStyled = styled.button`
   border-radius: 8px;
   overflow: hidden;
 
-  background: #fff;
+  background: ${(props) => props.theme.colors.secondary};
   border: 1px solid #835afd;
   cursor: pointer;
   display: flex;
