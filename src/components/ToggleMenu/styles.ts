@@ -49,7 +49,7 @@ export const ToggleMenuStyled = styled.div`
   }
 
   &.open {
-    background: #835afb;
+    background: ${(props) => props.theme.colors.primary};
     z-index: 5;
     position: absolute;
     top: 0;
