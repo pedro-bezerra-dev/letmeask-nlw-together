@@ -3,9 +3,9 @@ import styled from 'styled-components';
 export const PageRoom = styled.div`
   header {
     padding: 24px 36px;
-    border: 1px solid #e2e2e2;
+    border: 1px solid ${(props) => props.theme.colors.border};
 
-    .content {
+    > .content {
       max-width: 1120px;
       margin: 0 auto;
       display: flex;
@@ -44,7 +44,7 @@ export const PageRoom = styled.div`
       h1 {
         font-family: 'Poppins', sans-serif;
         font-size: 2.4rem;
-        color: #29292e;
+        color: ${(props) => props.theme.colors.font};
       }
 
       span {
@@ -64,7 +64,7 @@ export const PageRoom = styled.div`
         border: 0;
         padding: 16px;
         border-radius: 8px;
-        background: #fefefe;
+        background: ${(props) => props.theme.colors.secondary};
         box-shadow: 0 2px 12px rgba(0,0,0,0.04);
         resize: vertical;
         min-height: 130px;
@@ -88,7 +88,7 @@ export const PageRoom = styled.div`
 
           span {
             margin-left: 8px;
-            color: #29292e;
+            color: ${(props) => props.theme.colors.font};
             font-weight: 500;
             font-size: 1.4rem;
           }
@@ -120,7 +120,7 @@ export const PageRoom = styled.div`
   &.blocked {
     width: 100vw;
     height: 100vh;
-    background: #dbdcdd;
+    background: ${(props) => props.theme.colors.background};
 
     display: flex;
     align-items: center;
@@ -132,7 +132,7 @@ export const PageRoom = styled.div`
       align-items: stretch;
 
       padding: 30px;
-      background: #fff;
+      background: ${(props) => props.theme.colors.secondary};
       border: 1px solid #835afb;
       border-radius: 8px;
 
