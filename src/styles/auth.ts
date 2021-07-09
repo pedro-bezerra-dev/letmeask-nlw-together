@@ -1,11 +1,13 @@
-#page-auth {
+import styled from 'styled-components';
+
+export const PageAuth = styled.div`
   display: flex;
   align-items: stretch;
   height: 100vh;
 
   aside {
     flex: 3;
-    background: #835afd;
+    background: ${(props) => props.theme.colors.primary};
     color: #fff;
 
     display: flex;
@@ -50,6 +52,11 @@
     text-align: center;
     justify-content: center;
 
+    .theme-switcher {
+      top: 2.4rem;
+      right: 5rem;
+    }
+
     > img {
       align-self: center;
       width: 50%;
@@ -66,7 +73,7 @@
         height: 50px;
         border-radius: 8px;
         padding: 0 16px;
-        background: #fff;
+        background: ${(props) => props.theme.colors.secondary};
         border: 1px solid #a8a8b3;
       }
 
@@ -143,8 +150,8 @@
 }
 
 @media (max-width: 860px) {
-  #page-auth,
-  #page-auth.new-room-page {
+  &,
+  &.new-room-page {
     flex-direction: column;
 
     aside {
@@ -152,7 +159,7 @@
       margin-top: 18rem;
 
       background: none;
-      color: #29292e;
+      color: ${(props) => props.theme.colors.font};
       text-align: center;
 
       gap: 30px;
@@ -165,7 +172,7 @@
       }
 
       p {
-        color: #737380;
+        color: ${(props) => props.theme.colors.font};
       }
     }
 
@@ -176,6 +183,11 @@
 
     .main-content {
       margin-top: 5rem;
+
+      .theme-switcher {
+        top: 1.5rem;
+        left: 1.5rem;
+      }
 
       > img {
         position: absolute;
@@ -212,7 +224,7 @@
 }
 
 @media (max-width: 550px) {
-  #page-auth {
+  & {
     aside {
       margin-top: 15rem;
 
@@ -237,15 +249,15 @@
         width: 12rem;
       }
     }
-  }
 
-  #page-auth.new-room-page {
-    aside {
-      display: none;
-    }
+    &.new-room-page {
+      aside {
+        display: none;
+      }
 
-    main {
-      align-items: center;
+      main {
+        align-items: center;
+      }
     }
   }
-}
+`;

@@ -1,7 +1,7 @@
 import toast from 'react-hot-toast';
 import copyImg from '../../assets/images/copy.svg';
 
-import './styles.scss';
+import { RoomCodeStyled } from './styles';
 
 type RoomCodeProps = {
   code: string;
@@ -17,7 +17,7 @@ export function RoomCode({ code }: RoomCodeProps): JSX.Element {
   }
 
   return (
-    <button
+    <RoomCodeStyled
       type="button"
       onClick={copyRoomCodeToClipboard}
       className="room-code"
@@ -29,6 +29,6 @@ export function RoomCode({ code }: RoomCodeProps): JSX.Element {
         Sala #
         {code}
       </span>
-    </button>
+    </RoomCodeStyled>
   );
 }

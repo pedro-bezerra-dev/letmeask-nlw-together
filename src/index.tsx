@@ -7,11 +7,13 @@ import App from './App';
 
 import './services/firebase';
 
-import './styles/global.scss';
+import { ThemeContextProvider } from './contexts/ThemeContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeContextProvider>
+      <App />
+    </ThemeContextProvider>
     <Toaster />
   </React.StrictMode>,
   document.getElementById('root'),

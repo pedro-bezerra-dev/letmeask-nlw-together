@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 
-import './styles.scss';
+import { ButtonStyled } from './styles';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   // eslint-disable-next-line react/require-default-props
@@ -9,7 +9,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 export function Button({ isOutlined = false, ...props }: ButtonProps): JSX.Element {
   return (
-    <button
+    <ButtonStyled
       type="button"
       className={`button ${isOutlined ? 'outlined' : ''}`}
       {...props}

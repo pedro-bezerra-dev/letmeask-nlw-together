@@ -5,11 +5,12 @@ import { useAuth } from '../hooks/useAuth';
 import { database } from '../services/firebase';
 
 import { Button } from '../components/Button';
+import { ThemeSwitcher } from '../components/ThemeSwitcher';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 
-import '../styles/auth.scss';
+import { PageAuth } from '../styles/auth';
 
 export function NewRoom(): JSX.Element {
   const { user } = useAuth();
@@ -33,7 +34,7 @@ export function NewRoom(): JSX.Element {
   }
 
   return (
-    <div id="page-auth" className="new-room-page">
+    <PageAuth id="page-auth" className="new-room-page">
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas Q&amp;A ao-vivo</strong>
@@ -41,6 +42,7 @@ export function NewRoom(): JSX.Element {
       </aside>
       <main>
         <div className="main-content">
+          <ThemeSwitcher />
           <img src={logoImg} alt="Letmeask" />
           <h2>Criar uma nova sala</h2>
           <form onSubmit={handleCreateRoom}>
@@ -59,6 +61,6 @@ export function NewRoom(): JSX.Element {
           </p>
         </div>
       </main>
-    </div>
+    </PageAuth>
   );
 }

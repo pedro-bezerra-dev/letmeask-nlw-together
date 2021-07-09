@@ -10,13 +10,14 @@ import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 import { ToggleMenu } from '../components/ToggleMenu';
+import { ThemeSwitcher } from '../components/ThemeSwitcher';
 
 import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
 
-import '../styles/room.scss';
+import { PageRoom } from '../styles/room';
 
 type RoomParms = {
   id: string;
@@ -76,11 +77,13 @@ export function AdminRoom(): JSX.Element {
     <>
       {user?.id === authorId && (
         <>
-          <div id="page-room">
+          <PageRoom id="page-room">
             <header>
               <div className="content">
                 <img src={logoImg} alt="Logo" />
+                <ThemeSwitcher />
                 <ToggleMenu>
+                  <ThemeSwitcher />
                   <RoomCode code={roomId} />
                   <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
                 </ToggleMenu>
@@ -138,19 +141,19 @@ export function AdminRoom(): JSX.Element {
                 ))}
               </div>
             </main>
-          </div>
+          </PageRoom>
         </>
       )}
 
       { user?.id !== authorId && (
         <>
-          <div id="page-room" className="blocked">
+          <PageRoom id="page-room" className="blocked">
             <main>
               <img src={logoImg} alt="Logo" />
               <p>Sinto muito, você não é o adiministrador da sala</p>
               <Button onClick={() => history.goBack()}>Voltar</Button>
             </main>
-          </div>
+          </PageRoom>
         </>
       )}
 

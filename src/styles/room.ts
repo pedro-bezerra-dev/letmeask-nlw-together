@@ -1,14 +1,21 @@
-#page-room {
+import styled from 'styled-components';
+
+export const PageRoom = styled.div`
   header {
     padding: 24px 36px;
-    border: 1px solid #e2e2e2;
+    border: 1px solid ${(props) => props.theme.colors.border};
 
-    .content {
+    > .content {
       max-width: 1120px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      .theme-switcher {
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
       > img {
         max-height: 45px;
@@ -42,7 +49,7 @@
       h1 {
         font-family: 'Poppins', sans-serif;
         font-size: 2.4rem;
-        color: #29292e;
+        color: ${(props) => props.theme.colors.font};
       }
 
       span {
@@ -62,7 +69,7 @@
         border: 0;
         padding: 16px;
         border-radius: 8px;
-        background: #fefefe;
+        background: ${(props) => props.theme.colors.secondary};
         box-shadow: 0 2px 12px rgba(0,0,0,0.04);
         resize: vertical;
         min-height: 130px;
@@ -86,7 +93,7 @@
 
           span {
             margin-left: 8px;
-            color: #29292e;
+            color: ${(props) => props.theme.colors.font};
             font-weight: 500;
             font-size: 1.4rem;
           }
@@ -118,7 +125,7 @@
   &.blocked {
     width: 100vw;
     height: 100vh;
-    background: #dbdcdd;
+    background: ${(props) => props.theme.colors.background};
 
     display: flex;
     align-items: center;
@@ -130,7 +137,7 @@
       align-items: stretch;
 
       padding: 30px;
-      background: #fff;
+      background: ${(props) => props.theme.colors.secondary};
       border: 1px solid #835afb;
       border-radius: 8px;
 
@@ -148,52 +155,56 @@
       }
     }
   }
-}
 
 @media (max-width: 860px) {
-  #page-room {
-    header > .content {
-      > button {
-        display: none;
-      }
+  header > .content {
+    > button {
+      display: none;
+    }
 
-      .toggle-menu {
-        display: flex;
+    .toggle-menu {
+      display: flex;
+
+      .theme-switcher {
+        top: 2.4rem;
+        left: 3.6rem;
+        transform: translateY(20%);
+      }
+    }
+  }
+
+  main {
+    width: 80%;
+
+    .room-title {
+      justify-content: space-between;
+    }
+
+    form {
+      .form-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+
+        button {
+          width: 100%;
+        }
       }
     }
 
-    main {
-      width: 80%;
+    .questions-list {
+      .user-info {
+        gap: 1rem;
 
-      .room-title {
-        justify-content: space-between;
-      }
-
-      form {
-        .form-footer {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 2rem;
-
-          button {
-            width: 100%;
-          }
+        span {
+          margin: 0;
         }
       }
 
-      .questions-list {
-        .user-info {
-          gap: 1rem;
-
-          span {
-            margin: 0;
-          }
-        }
-
-        .question footer div:nth-child(2) {
-          gap: 10px;
-        }
+      .question footer div:nth-child(2) {
+        gap: 10px;
       }
     }
   }
 }
+`;

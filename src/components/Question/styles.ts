@@ -1,5 +1,7 @@
-.question {
-  background: #fefefe;
+import styled from 'styled-components';
+
+export const QuestionStyled = styled.div`
+  background: ${(props) => props.theme.colors.secondary};
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   padding: 24px;
@@ -43,7 +45,7 @@
 
       span {
         margin-left: 8px;
-        color: #737380;
+        color: #43434C;
         font-size: 1.4rem;
       }
     }
@@ -63,7 +65,7 @@
       &.like-button {
         display: flex;
         align-items: flex-end;
-        color: #737380;
+        color: #43434C;
         gap: 8px;
 
         &.liked {
@@ -80,4 +82,4 @@
       }
     }
   }
-}
+`;

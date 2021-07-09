@@ -9,12 +9,13 @@ import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 import { ToggleMenu } from '../components/ToggleMenu';
+import { ThemeSwitcher } from '../components/ThemeSwitcher';
 
 import { database } from '../services/firebase';
 
 import logoImg from '../assets/images/logo.svg';
 
-import '../styles/room.scss';
+import { PageRoom } from '../styles/room';
 
 type RoomParms = {
   id: string;
@@ -72,12 +73,14 @@ export function Room(): JSX.Element {
     <>
       { !roomItsClosed && (
       <>
-        <div id="page-room">
+        <PageRoom id="page-room">
           <header>
             <div className="content">
               <img src={logoImg} alt="" />
+              <ThemeSwitcher />
               <RoomCode code={roomId} />
               <ToggleMenu>
+                <ThemeSwitcher />
                 <RoomCode code={roomId} />
               </ToggleMenu>
             </div>
@@ -150,19 +153,19 @@ export function Room(): JSX.Element {
               ))}
             </div>
           </main>
-        </div>
+        </PageRoom>
       </>
       ) }
 
       { roomItsClosed && (
         <>
-          <div id="page-room" className="blocked">
+          <PageRoom id="page-room" className="blocked">
             <main>
               <img src={logoImg} alt="Logo" />
               <p>Ops, parece que o adiministrador já encerrou a sala</p>
               <Button onClick={() => history.push('/')}>Voltar para a Home</Button>
             </main>
-          </div>
+          </PageRoom>
         </>
       )}
     </>
