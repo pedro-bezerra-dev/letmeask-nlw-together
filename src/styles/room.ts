@@ -152,6 +152,7 @@ export const PageRoom = styled.div`
         text-align: center;
         width: 80%;
         margin-bottom: 20px;
+        color: #29292e;
       }
     }
   }
