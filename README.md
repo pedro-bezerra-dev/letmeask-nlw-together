@@ -20,6 +20,8 @@ This project was developed with the following technologies:
 
 ## 🧪 How to run
 
+Access the version currently on air on [`https://letmeask-97494.web.app/`](https://letmeask-97494.web.app/) or...
+
 - Clone the repository
 - Install dependencies with `yarn`
 - Start the server with `yarn start`
