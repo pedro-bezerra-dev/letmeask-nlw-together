@@ -82,6 +82,7 @@ export function AdminRoom(): JSX.Element {
               <div className="content">
                 <img src={logoImg} alt="Logo" />
                 <ThemeSwitcher />
+                <RoomCode code={roomId} />
                 <ToggleMenu>
                   <ThemeSwitcher />
                   <RoomCode code={roomId} />
