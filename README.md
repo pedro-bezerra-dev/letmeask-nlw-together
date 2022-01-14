@@ -8,7 +8,7 @@
 
 ## 📑 Description
 
-An app where you can clear up your doubts with those who understand the subject, use it in your work meetings to clarify the matter or even join friends for a chat, why not?
+An app where you can clear up your doubts with those who understand the subject or use it in your work meetings to clarify the matter.
 
 ## 🧰 Technologies
 
